@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
+import { User } from '../models/user';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,10 +12,10 @@ export class GitHubUsersService {
 
   constructor(private http: HttpClient) { }
 
-  getAllUsers(): Observable<any[]> {
+  getAllUsers(): Observable<User[]> {
     const count = 10;
     const page = 1;
     const url = `${this.baseurl}/users?page=${page}&per_page=${count}`;
-    return this.http.get<any[]>(url);
+    return this.http.get<User[]>(url);
   }
 }
