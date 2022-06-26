@@ -1,4 +1,4 @@
-<div *ngFor="let user of users; let i = index; trackBy: usersTrackBy;">
+<div *ngFor="let user of users; let i = index; trackBy: usersTrackBy;" (click)="navigateToUserDetails(user)">
   <div>
     <img src="{{ user.avatar_url }}" />
   </div>
