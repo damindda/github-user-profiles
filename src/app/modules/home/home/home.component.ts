@@ -8,12 +8,18 @@ import { GitHubUsersService } from 'src/app/services/git-hub-users.service';
 })
 export class HomeComponent implements OnInit {
 
+  users!: User[];
+
   constructor(private gitHubUsersService: GitHubUsersService) { }
 
   ngOnInit(): void {
     this.gitHubUsersService
     .getAllUsers()
-    .subscribe((data: User[]) => console.log(data));
+    .subscribe((data: User[]) => this.users = data);
+  }
+
+  usersTrackBy(index: number, user: User) {
+    return user.id;
   }
 
 }
