@@ -1,6 +1,16 @@
-<div *ngFor="let user of users; let i = index; trackBy: usersTrackBy;" (click)="navigateToUserDetails(user)">
+<div
+  *ngFor="let user of users; let i = index; trackBy: usersTrackBy"
+  (click)="navigateToUserDetails(user)"
+>
   <div>
     <img src="{{ user.avatar_url }}" />
   </div>
   <h3>{{ user.login }}</h3>
 </div>
+
+<div
+  infiniteScroll
+  [infiniteScrollDistance]="1"
+  [infiniteScrollThrottle]="30"
+  (scrolled)="onScrollDown()"
+></div>

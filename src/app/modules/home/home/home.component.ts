@@ -14,9 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(private gitHubUsersService: GitHubUsersService, private router: Router) { }
 
   ngOnInit(): void {
-    this.gitHubUsersService
-    .getAllUsers()
-    .subscribe((data: User[]) => this.users = data);
+    this.getUpdatedUsers();
   }
 
   usersTrackBy(index: number, user: User) {
@@ -27,6 +25,16 @@ export class HomeComponent implements OnInit {
     console.log('user-->', user);
     const id = user.login;
     this.router.navigate(['/user', id]);
+  }
+
+  onScrollDown() {
+    this.getUpdatedUsers();
+  }
+
+  getUpdatedUsers() {
+    this.gitHubUsersService
+    .getAllUsers()
+    .subscribe((data: User[]) => this.users = data);
   }
 
 }
