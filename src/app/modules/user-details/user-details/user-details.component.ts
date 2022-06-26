@@ -6,11 +6,14 @@ import { GitHubUsersService } from 'src/app/services/git-hub-users.service';
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
-  styleUrls: ['./user-details.component.scss']
+  styleUrls: ['./user-details.component.scss'],
 })
 export class UserDetailsComponent implements OnInit {
-
-  constructor(private gitHubUsersService: GitHubUsersService, private activateRoute: ActivatedRoute) { }
+  user!: UserDetails;
+  constructor(
+    private gitHubUsersService: GitHubUsersService,
+    private activateRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.activateRoute.params.subscribe((data) => {
@@ -18,13 +21,11 @@ export class UserDetailsComponent implements OnInit {
       console.log('params---->', data['id']);
       this.getUserData(userName);
     });
-
   }
 
   getUserData(userName: string) {
     this.gitHubUsersService
       .getUser(userName)
-      .subscribe((data: UserDetails) => console.log(data));
+      .subscribe((data: UserDetails) => this.user = data);
   }
-
 }
