@@ -1,3 +1,5 @@
+<div class="container mx-auto">
+  <div class="grid grid-cols-3 gap-4">
 <div
   *ngFor="let user of users$ | async; let i = index; trackBy: usersTrackBy"
   (click)="navigateToUserDetails(user)"
@@ -14,3 +16,5 @@
   [infiniteScrollThrottle]="30"
   (scrolled)="onScrollDown()"
 ></div>
+</div>
+</div>
