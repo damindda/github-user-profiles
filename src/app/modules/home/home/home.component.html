@@ -1,37 +1,38 @@
 <div class="container mx-auto">
   <div class="grid grid-cols-3 gap-4">
     <div
-      class="p-6 m-8 items-center border border-blue-500 cursor-pointer hover:shadow-lg transition"
+      class="text-center border flex flex-col max-w-sm mx-4 bg-white text-gray-900"
       *ngFor="let user of users$ | async; let i = index; trackBy: usersTrackBy"
       (click)="navigateToUserDetails(user)"
     >
-      <div class="w-16 h-16 md:w-28 md:h-28">
-        <img
-          src="{{ user.avatar_url }}"
-          alt=""
-          class="cat rounded-full w-full h-full border-2 border-blue-500"
-        />
+      <div class="h-32 overflow-hidden">
+        <div class="bg-blue-100 h-36"></div>
       </div>
       <div
-        class="item-center mx-4 bottom-2 px-2 md:px-0 py-3 text-xl md:text-2xl text-indigo-900"
+        class="mx-auto w-32 h-32 -mt-20 border-2 border-white rounded-full overflow-hidden"
       >
-        <div class="font-semibold uppercase text-xs text-gray-400">user</div>
-        <h3 class="font-bold text-2x mb-2">{{ user.login }}</h3>
-
-        <div class="my-2 flex space-x-4">
-          <span
-            class="bg-blue-600 text-gray-200 text-xs px-2 py-1 rounded-full p-8 hover:bg-red-900"
-            >View Profile</span
-          >
-        </div>
+        <img
+        src="{{ user.avatar_url }}"
+        alt=""
+        class="object-cover object-center h-32"
+      />
+      </div>
+      <div class="text-center mt-2">
+        <label class="font-semibold uppercase text-xs text-gray-400">user</label>
+        <h2 class="font-bold text-4xl mb-8">{{ user.login }}</h2>
+      </div>
+      <div class="p-6 border-t m-2">
+        <span
+          class="border border-blue-600 cursor-pointer hover:bg-gradient-to-br hover:from-blue-500 hover:to-blue-700 text-blue-600 hover:text-white py-4 px-8 rounded-full text-xs"
+          >View Profile</span
+        >
       </div>
     </div>
-
-    <div
-      infiniteScroll
-      [infiniteScrollDistance]="1"
-      [infiniteScrollThrottle]="30"
-      (scrolled)="onScrollDown()"
-    ></div>
   </div>
+  <div
+    infiniteScroll
+    [infiniteScrollDistance]="1"
+    [infiniteScrollThrottle]="30"
+    (scrolled)="onScrollDown()"
+  ></div>
 </div>
