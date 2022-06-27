@@ -53,9 +53,9 @@
         <p class="text-gray-500 mb-2">{{ (user$ | async)?.bio }}</p>
         <div class="mb-2">
           <span *ngIf="(user$ | async)?.location !== null"
-            >{{ (user$ | async)?.location }} | </span
+            >{{ (user$ | async)?.location }}</span
           >
-          <span *ngIf="(user$ | async)?.company !== null">{{
+          <span *ngIf="(user$ | async)?.company !== null"> | {{
             (user$ | async)?.company
           }}</span>
         </div>
