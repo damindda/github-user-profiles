@@ -1,38 +1,38 @@
-<h2 class="primary-color-white">User Details</h2>
-
+<h2>User Details</h2>
+<a routerLink="/home">Home Page</a>
 <div>
   <div>
     <div>
-      <img src="{{ user?.avatar_url }}" alt="" />
+      <img src="{{ (user$ | async)?.avatar_url }}" alt="" />
     </div>
-    <h3>{{ user?.name }}</h3>
+    <h3>{{ (user$ | async)?.name }}</h3>
   </div>
 
   <div>
-    <h3>{{ user?.login }}</h3>
-    <h3>{{ user?.company }}</h3>
-    <h3>{{ user?.bio }}</h3>
-    <h3>{{ user?.location }}</h3>
-    <h3>{{ user?.email }}</h3>
+    <h3>{{ (user$ | async)?.login }}</h3>
+    <h3>{{ (user$ | async)?.company }}</h3>
+    <h3>{{ (user$ | async)?.bio }}</h3>
+    <h3>{{ (user$ | async)?.location }}</h3>
+    <h3>{{ (user$ | async)?.email }}</h3>
 
-    <h3>{{ user?.followers }}</h3>
-    <h3>{{ user?.following }}</h3>
+    <h3>{{ (user$ | async)?.followers }}</h3>
+    <h3>{{ (user$ | async)?.following }}</h3>
 
-    <h3>{{ user?.created_at | date }}</h3>
-    <h3>{{ user?.updated_at | date }}</h3>
+    <h3>{{ (user$ | async)?.created_at | date }}</h3>
+    <h3>{{ (user$ | async)?.updated_at | date }}</h3>
   </div>
   <div>
-    <h3>{{ user?.events_url }}</h3>
-    <h3>followers url {{ user?.followers_url }}</h3>
-    <h3>following url {{ user?.following_url }}</h3>
-    <h3>{{ user?.gists_url }}</h3>
-    <h3>go to profile {{ user?.html_url }}</h3>
-    <h3>{{ user?.followers_url }}</h3>
-    <h3>{{ user?.events_url }}</h3>
-    <h3>{{ user?.followers_url }}</h3>
-    <h3>{{ user?.blog }}</h3>
+    <h3>{{ (user$ | async)?.events_url }}</h3>
+    <h3>followers url {{ (user$ | async)?.followers_url }}</h3>
+    <h3>following url {{ (user$ | async)?.following_url }}</h3>
+    <h3>{{ (user$ | async)?.gists_url }}</h3>
+    <h3>go to profile {{ (user$ | async)?.html_url }}</h3>
+    <h3>{{ (user$ | async)?.followers_url }}</h3>
+    <h3>{{ (user$ | async)?.events_url }}</h3>
+    <h3>{{ (user$ | async)?.followers_url }}</h3>
+    <h3>{{ (user$ | async)?.blog }}</h3>
 
-    <h3>public repos {{ user?.public_repos }}</h3>
-    <h3>public_gists {{ user?.public_gists }}</h3>
+    <h3>public repos {{ (user$ | async)?.public_repos }}</h3>
+    <h3>public_gists {{ (user$ | async)?.public_gists }}</h3>
   </div>
 </div>
