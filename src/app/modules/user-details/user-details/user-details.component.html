@@ -1,40 +1,100 @@
+<div class="app min-h-screen bg-grey-lightest overflow-hidden">
+  <div class="h-32 flex items-center justify-center bg-indigo-800">
+    <h1 class="text-2xl text-white -mt-8">User Details</h1>
+  </div>
 
-<a class="text-center uppercase text-purple-700 hover:text-violet-600 " routerLink="/home">go back</a>
+  <div
+    class="wrapper border-b-2 -mt-8 bg-white mx-auto max-w-4xl rounded shadow-lg"
+  >
+    <div class="p-12 flex flex-row">
+      <div class="flex flex-col w-96 items-start">
+        <div
+          class="mx-auto w-48 h-48 border-2 border-gray-400 rounded-full overflow-hidden"
+        >
+          <img
+            src="{{ (user$ | async)?.avatar_url }}"
+            alt=""
+            class="object-cover object-center h-48"
+          />
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <a
+          class="text-left flex text-sm uppercase text-blue-500 hover:text-purple-600"
+          routerLink="/home"
+        >
+          <svg
+            class="w-6 h-6 dark:text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            ></path>
+          </svg>
 
-<h2>User Details</h2>
-<div>
-  <div>
-    <div>
-      <img src="{{ (user$ | async)?.avatar_url }}" alt="" />
+          Go back</a
+        >
+        <h4 class="font-bold text-3xl">{{ (user$ | async)?.name }}</h4>
+        <span class="text-gray-500"
+          >Check my profile
+          <a
+            class="text-blue-500 hover:text-purple-600 mb-2"
+            href="{{ (user$ | async)?.html_url }}"
+            target="_blank"
+            >{{ (user$ | async)?.login }}</a
+          ></span
+        >
+        <p class="text-gray-500 mb-2">{{ (user$ | async)?.bio }}</p>
+        <div class="mb-2">
+          <span *ngIf="(user$ | async)?.location !== null"
+            >{{ (user$ | async)?.location }} | </span
+          >
+          <span *ngIf="(user$ | async)?.company !== null">{{
+            (user$ | async)?.company
+          }}</span>
+        </div>
+
+        <label class="text-gray-500">{{ (user$ | async)?.email }}</label>
+        <div class="mt-5 flex flex-row justify-left items-start">
+          <div class="pr-24 text-left">
+            <p class="text-gray-500">Followers</p>
+            <b class="text-2xl">{{ (user$ | async)?.followers }}</b>
+          </div>
+          <div class="pr-24 text-left">
+            <p class="text-gray-500">Following</p>
+            <b class="text-2xl">{{ (user$ | async)?.following }}</b>
+          </div>
+        </div>
+      </div>
     </div>
-    <h3>{{ (user$ | async)?.name }}</h3>
-  </div>
 
-  <div>
-    <h3>{{ (user$ | async)?.login }}</h3>
-    <h3>{{ (user$ | async)?.company }}</h3>
-    <h3>{{ (user$ | async)?.bio }}</h3>
-    <h3>{{ (user$ | async)?.location }}</h3>
-    <h3>{{ (user$ | async)?.email }}</h3>
-
-    <h3>{{ (user$ | async)?.followers }}</h3>
-    <h3>{{ (user$ | async)?.following }}</h3>
-
-    <h3>{{ (user$ | async)?.created_at | date }}</h3>
-    <h3>{{ (user$ | async)?.updated_at | date }}</h3>
-  </div>
-  <div>
-    <h3>{{ (user$ | async)?.events_url }}</h3>
-    <h3>followers url {{ (user$ | async)?.followers_url }}</h3>
-    <h3>following url {{ (user$ | async)?.following_url }}</h3>
-    <h3>{{ (user$ | async)?.gists_url }}</h3>
-    <h3>go to profile {{ (user$ | async)?.html_url }}</h3>
-    <h3>{{ (user$ | async)?.followers_url }}</h3>
-    <h3>{{ (user$ | async)?.events_url }}</h3>
-    <h3>{{ (user$ | async)?.followers_url }}</h3>
-    <h3>{{ (user$ | async)?.blog }}</h3>
-
-    <h3>public repos {{ (user$ | async)?.public_repos }}</h3>
-    <h3>public_gists {{ (user$ | async)?.public_gists }}</h3>
+    <div class="border border-t-2 p-10">
+      <div class="flex flex-row justify-center content-center items-start">
+        <div class="pr-12 text-left">
+          <p class="text-gray-500">Public repos</p>
+          <b class="text-xl">{{ (user$ | async)?.public_repos }}</b>
+        </div>
+        <div class="pr-12 text-left">
+          <p class="text-gray-500">Public gists</p>
+          <b class="text-xl">{{ (user$ | async)?.public_gists }}</b>
+        </div>
+        <div class="pr-12 text-left">
+          <p class="text-gray-500">Created at</p>
+          <b class="text-xl">{{ (user$ | async)?.created_at | date }}</b>
+        </div>
+        <div class="pr-12 text-left">
+          <p class="text-gray-500">Updated at</p>
+          <b class="text-xl">{{ (user$ | async)?.updated_at | date }}</b>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<div></div>
