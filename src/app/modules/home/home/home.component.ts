@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from 'src/app/models';
-import { getAllUsersAction } from 'src/app/store/users';
+import { getAllUsersSelector, getAllUsersAction } from 'src/app/store/users';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,6 +11,7 @@ import { getAllUsersAction } from 'src/app/store/users';
 })
 export class HomeComponent implements OnInit {
   users!: User[];
+  users$: Observable<User[]> = this.store.select(getAllUsersSelector);
   count$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   count: number = 1;
   pageSize: number = 10;
