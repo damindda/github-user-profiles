@@ -1,5 +1,5 @@
 <div
-  *ngFor="let user of users; let i = index; trackBy: usersTrackBy"
+  *ngFor="let user of users$ | async; let i = index; trackBy: usersTrackBy"
   (click)="navigateToUserDetails(user)"
 >
   <div>
