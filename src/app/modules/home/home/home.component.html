@@ -1,7 +1,7 @@
 <div class="container mx-auto">
   <div class="grid grid-cols-3 gap-4">
     <div
-      class="text-center border flex flex-col max-w-sm mx-4 bg-white text-gray-900"
+      class="text-center border cursor-pointer flex flex-col max-w-sm mx-4 bg-white text-gray-900"
       *ngFor="let user of users$ | async; let i = index; trackBy: usersTrackBy"
       (click)="navigateToUserDetails(user)"
     >
