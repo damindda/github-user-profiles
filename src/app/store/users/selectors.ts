@@ -9,3 +9,8 @@ export const getAllUsersSelector = createSelector(
   (state: UserState) => state?.allusers
 );
 
+export const loadingSelector = createSelector(
+  getUsersState,
+  (state: UserState) => state?.loading
+);
+

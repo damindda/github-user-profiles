@@ -5,30 +5,12 @@
       *ngFor="let user of users$ | async; let i = index; trackBy: usersTrackBy"
       (click)="navigateToUserDetails(user)"
     >
-      <div class="h-32 overflow-hidden">
-        <div class="bg-blue-100 h-36"></div>
-      </div>
-      <div
-        class="mx-auto w-32 h-32 -mt-20 border-2 border-white rounded-full overflow-hidden"
-      >
-        <img
-        src="{{ user.avatar_url }}"
-        alt=""
-        class="object-cover object-center h-32"
-      />
-      </div>
-      <div class="text-center mt-2">
-        <label class="font-semibold uppercase text-xs text-gray-400">user</label>
-        <h2 class="font-bold text-4xl mb-8">{{ user.login }}</h2>
-      </div>
-      <div class="p-6 border-t m-2">
-        <span
-          class="border border-blue-600 cursor-pointer hover:bg-gradient-to-br hover:from-blue-500 hover:to-blue-700 text-blue-600 hover:text-white py-4 px-8 rounded-full text-xs"
-          >View Profile</span
-        >
-      </div>
+      <app-user [user]="user"></app-user>
     </div>
   </div>
+  <ng-container *ngIf="(loading$ | async);">
+    <app-loading></app-loading>
+  </ng-container>
   <div
     infiniteScroll
     [infiniteScrollDistance]="1"

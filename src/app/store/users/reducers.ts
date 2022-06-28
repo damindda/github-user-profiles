@@ -3,25 +3,29 @@ import {
   getAllUsersAction,
   getAllUsersSuccessAction
 } from './actions';
-import { User, UserDetails } from 'src/app/models';
+import { User } from 'src/app/models';
 
 export interface UserState {
   error: any;
   allusers: User[];
+  loading: boolean;
 }
 
 export const initialState: UserState = {
   error: null,
-  allusers: []
+  allusers: [],
+  loading: false
 };
 
 export const userReducer = createReducer(
   initialState,
   on(getAllUsersAction, (state) => ({
-    ...state
+    ...state,
+    loading: true
   })),
   on(getAllUsersSuccessAction, (state, { data: data }) => ({
     ...state,
-    allusers: data
+    allusers: data,
+    loading: false
   }))
 );

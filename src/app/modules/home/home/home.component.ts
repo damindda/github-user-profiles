@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from 'src/app/models';
-import { getAllUsersSelector, getAllUsersAction } from 'src/app/store/users';
+import { getAllUsersSelector, getAllUsersAction, loadingSelector } from 'src/app/store/users';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html'
@@ -11,6 +11,7 @@ import { getAllUsersSelector, getAllUsersAction } from 'src/app/store/users';
 export class HomeComponent implements OnInit {
   users!: User[];
   users$: Observable<User[]> = this.store.select(getAllUsersSelector);
+  loading$: Observable<boolean> = this.store.select(loadingSelector);
   count$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   count: number = 1;
   pageSize: number = 10;

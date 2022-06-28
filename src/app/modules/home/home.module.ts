@@ -7,14 +7,18 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { UsersEffects } from 'src/app/store/users/effects';
 import { userReducer } from 'src/app/store/users';
+import { LoadingModule } from 'src/app/components/loading/loading.module';
+import { UserComponent } from './user-component/user.component';
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     InfiniteScrollModule,
+    LoadingModule,
     StoreModule.forFeature('userState', userReducer),
     EffectsModule.forFeature([UsersEffects])
   ]
